@@ -1,0 +1,71 @@
+<{include "public/header.html"}>
+
+
+	<!-- content -->
+
+	<div class="content">
+		<div class="now">您现在的位置：<a href="<{$app}>">首页</a> <{$nowpath}></div>
+		<div class="danye_left">
+		<div class="danye_help">
+			<div class="danye_tt"  style="background:#00A8E8; color:#fff;">资讯中心</div>
+			<div class="danye_list">
+				<ul>
+					<{foreach $class as $v}>
+						<li><a href="<{$app}>?m=article&a=plist&cid=<{$v.id}>" title="<{$v.catname}>"><{$v.catname}></a></li>
+					<{/foreach}>
+				</ul>
+			</div>
+		</div>
+		<div class="danye_help mat8">
+			<div class="danye_list">
+				<h3>用户指南</h3>
+				<ul>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[0].id}>" title="<{$page[0].name}>"><{$page[0].name}></a></li>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[1].id}>" title="<{$page[1].name}>"><{$page[1].name}></a></li>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[2].id}>" title="<{$page[2].name}>"><{$page[2].name}></a></li>
+				</ul>
+				<h3>配送方式</h3>
+				<ul>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[3].id}>" title="<{$page[3].name}>"><{$page[3].name}></a></li>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[4].id}>" title="<{$page[4].name}>"><{$page[4].name}></a></li>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[5].id}>" title="<{$page[5].name}>"><{$page[5].name}></a></li>
+				</ul>
+				<h3>售后服务</h3>
+				<ul>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[6].id}>" title="<{$page[6].name}>"><{$page[6].name}></a></li>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[7].id}>" title="<{$page[7].name}>"><{$page[7].name}></a></li>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[8].id}>" title="<{$page[8].name}>"><{$page[8].name}></a></li>
+				</ul>
+				<h3>关于我们</h3>
+				<ul>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[9].id}>" title="<{$page[9].name}>"><{$page[9].name}></a></li>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[10].id}>" title="<{$page[10].name}>"><{$page[10].name}></a></li>
+					<li><a href="<{$app}>?m=page&a=index&id=<{$page[11].id}>" title="<{$page[11].name}>"><{$page[11].name}></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="danye_right">
+		<{if $smarty.get.m eq 'page'}>
+			<div class="page_tt"><{$name}></div>
+			<div class="danye_main"><{$content}></div>
+		<{else if $smarty.get.m eq 'article' and $smarty.get.a eq 'plist'}>
+			<div class="page_tt"><{$classes[$smarty.get.cid]}></div>
+			<ul class="wenzhang_list">
+				<{foreach $info_list as $v }>
+				<li><a href="<{$app}>?m=article&a=index&id=<{$v.id}>" title="<{$v.name}>"><{$v.name}></a><span class="fl c888">(浏览量：<{$v.clicknum}>)</span> <span class="fr"><{$v.atime|date_format:'%Y-%m-%d %H:%M:%S'}></span><div class="clear"></div></li>
+				<{/foreach}>
+			</ul>
+			<div class="mat8"><{$fpage}></div>
+		<{else if $smarty.get.m eq 'article' }>
+			<div class="page_tt"><{$classes[$cid]}></div>
+			<h3 class="mat20 font16" style="text-align:center;"><{$name}></h3>
+			<p class="c888 mat10 mab20" style="text-align:center;">发布日期：<{$atime|date_format:'%Y-%m-%d %H:%M:%S'}>　浏览量：<{$clicknum}></p>
+			<div class="danye_main"><{$content}></div>
+		<{/if}>
+	</div>
+
+
+	<!-- footer -->
+
+	<{include "public/footer.html"}>

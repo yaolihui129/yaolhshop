@@ -1,0 +1,33 @@
+<{include "public/header.html"}>
+<div class="content">
+	<{include "user/menu.html"}>
+	<div class="fr huiyuan_main">
+		<h3 class="hy_rtt"><{$title}></h3>
+		<div class="hy_table hy_table2">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="bg_f8" style="height:auto">商品名称</td>
+				<td class="bg_f8" width="100" style="height:auto">商品价格</td>
+				<td class="bg_f8" width="100" style="height:auto">收藏日期</td>
+				<td class="bg_f8" width="60" style="height:auto">操作</td>
+			</tr>
+			<{foreach $data as $v}>
+			<tr>
+				<td class="hotimg">
+					<a class="fl mar5" href="<{$app}>?m=product&a=index&id=<{$a.pid}>"><img src="<{thumb($v.logo, 60, 60)}>" /></a>
+					<a href="<{$app}>?m=product&a=index&id=<{$a.pid}>" title="<{$v.name}>" target="_blank" class="cblue fl mat20 mal5"><{$v.name}></a>
+					<div class="clear"></div>
+				</td>
+				<td class="money1">￥<{$v.money}></td>
+				<td class="c666"><{$v.atime|date_format:'%Y-%m-%d %H:%M'}></td>
+				<td><a class="cblue" href="<{$app}>?m=user&a=collectdel&id=<{$v.id}>&pid=<{$v.pid}>" onclick="return confirm('确定要删除这个收藏吗?')">删除</a></td>
+			</tr>
+			<{/foreach}>
+			</table>
+			<div class="fenye mat10"><{$fpage}></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<{include "public/footer.html"}>
+

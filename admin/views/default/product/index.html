@@ -1,0 +1,104 @@
+<{include "public/header.html"}>
+
+<div class="right">
+	<div class="now">
+		<div class="now_l"></div>
+		<div class="now_m">
+			<span class="fl"><{$title}></span>
+			<span class="fr fabu"><a href="<{$url}>&a=add">发布商品</a></span>
+		</div>
+		<div class="now_r"></div>
+		<div class="clear"></div>
+	</div>
+	<div class="search">
+		<div class="fl qiehuan">
+			<a href="<{$url}>&a=index&<{$args}>&state=1" <{if !isset($where['state']) or $where['state'] eq 1 }> class="sel" <{/if}>>出售中商品</a>
+			| <a href="<{$url}>&a=index&<{$args}>&state=2" <{if $where['state'] eq 2 }> class="sel" <{/if}>>下架的商品</a>
+		</div>
+		<div class="fr searbox" id="">
+			<form method="get">
+				<input type="hidden" name="m" value="product" />
+				<input type="hidden" name="state" value="1" />
+
+				商品名称：<input type="text" name="name" value="<{$where.name}>" class="inputtext" />
+				<{$select}>
+
+				<select name="filter" class="inputselect">
+					<option value="">全部商品</option>
+					<{foreach $filter_arr as $k=>$v}>
+						<option  value="<{$k}>" <{if $k eq $where.filter}> selected="selected" <{/if}>><{$v}></option>
+					<{/foreach}>
+				</select>
+
+				<select name="orderby" class="inputselect">
+					<option value="">默认排序</option>
+					<{foreach $orderby_arr as $k=>$v}>
+						<option value="<{$k}>"  <{if $k eq $where.orderby}> selected="selected" <{/if}>><{$v}></option>
+					<{/foreach}>				
+				</select>
+
+				<input type="submit" value="搜索" class="input2" />
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<form method="post" id="form">
+	<table border="0" cellspacing="0" cellpadding="0" class="list">
+	<tr>
+		<td class="bgtt" width="10"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+		<td class="bgtt" width="50">ID号</td>
+		<td class="bgtt" width="">商品名称</td>
+		<td class="bgtt" width="80">商品分类</td>
+		<td class="bgtt" width="80">单价(元)</td>
+		<td class="bgtt" width="80">售出/库存</td>
+		<td class="bgtt" width="50">浏览</td>
+		<td class="bgtt" width="88">操作</td>
+	</tr>
+	<{foreach $data as $v}>
+	<tr>
+		<td><input type="checkbox" name="id[]" value="<{$v.id}>" /></td>
+		<td><{$v.id}></td>
+		<td class="aleft">
+			<span class="fl mar5" style="border:1px solid #ddd"><img src="<{thumb($v.logo, 50,50)}>" width="45" height="45"></span>
+			<a class="cblue" href="index.php?m=product&id=<{$v.id}>" target="_blank"><{$v.name}></a><{if $v.istuijian}><span class="cred">[荐]</span><{/if}> <{if $v.istj}><span class="cgreen">[特]</span><{/if}>		</td>
+		<td class="font13"><{$cats[$v.cid]}></td>
+		<td><span class="num font16 cred strong"><{$v.money}></span></td>
+		<td><span class="font14 corg num strong"><{$v.sellnum}></span>/<{$v.num}></td>
+		<td><{$v.clicknum}></td>
+		<td>
+			<a href="<{$url}>&a=mod&id=<{$v.id}>" class="admin_edit mar3">修改</a>
+			<a href="<{$url}>&a=del&id=<{$v.id}>" class="admin_del" onclick="confirm('你确定要删除 <{$v.name}> 吗？')">删除</a>
+		</td>
+	</tr>
+	<{/foreach}>
+
+		<tr>
+		<td class="bgtt"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+		<td class="bgtt" colspan="8">
+			<span class="fl">
+				<button href="<{$url}>&a=del" onclick="return bro_cfall(this, 'id', 'form', '批量删除')">批量删除</button>
+				<button href="<{$url}>&a=state&state=1" onclick="return bro_cfall(this, 'id', 'form', '批量上架')">批量上架</button>
+				<button href="<{$url}>&a=state&state=2" onclick="return bro_cfall(this, 'id', 'form', '批量下架')">批量下架</button>
+				<button href="<{$url}>&a=tuijian&tuijian=1" onclick="return bro_cfall(this, 'id', 'form', '批量推荐')">批量推荐</button>
+				<button href="<{$url}>&a=tuijian&tuijian=0" onclick="return bro_cfall(this, 'id', 'form', '取消推荐')">取消推荐</button>
+			</span>
+		
+
+			<{$fpage}>
+		</td>
+	</tr>
+	</table>
+	</form>
+</div>
+<script type="text/javascript"> 
+$(function(){
+
+	$("select").change(function(){
+		window.location = '<{$url}>&a=index&<{$args}>&'+$(this).attr('name')+"="+$(this).find("option:selected").val();
+	})
+})
+</script>
+
+<{include "public/footer.html"}>
+
+

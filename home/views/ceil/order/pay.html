@@ -1,0 +1,25 @@
+<{include "public/header.html"}>
+<div class="content">
+	<div class="order_cg">
+		<p>
+		<{if !stripos($_SERVER['HTTP_REFERER'], 'm=order&a=add') }>
+			请您及时付款，以便订单尽快处理！
+		<{elseif $payway eq '3' }>
+			您已成功提交订单，等待管理员审核发货！
+		<{else}>
+			您已成功提交订单，请及时付款！
+		<{/if}>
+		</p>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您的订单编号：<span class="cblue mar20"><{$id}></span>
+		应付金额：<span class="cred font16 mar20 strong num"><{$money}>元</span>
+		付款方式：<span class="cred font14 mar20"><{$cache_payway[$payway]['name']}></span>
+		<{if $payway eq 1 }>
+			<form method="post"><input type="submit" name="do_submit" value="去付款" class="btn_05" /></form>
+		<{elseif $payway eq 2 }>
+			<div class="shouhuo_info"><{nl2br($cache_payway[$payway]['ptext'])}></div>
+		<{/if}>
+	</div>
+</div>
+
+<{include "public/footer.html"}>
+

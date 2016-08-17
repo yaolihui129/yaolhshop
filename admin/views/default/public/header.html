@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
+	<title>BroPHP后台管理 - <{$title}></title>
+	<link type="text/css" rel="stylesheet" href="<{$res}>/css/style.css" />
+	<script type="text/javascript" src="<{$public}>/js/jquery.js"></script>
+	<script type="text/javascript" src="<{$public}>/js/global.js"></script>
+</head>
+<div class="bgimg"></div>
+<div class="pagetop">
+	<div class="head">
+		<div class="logo fl"><img src="<{$res}>/images/logo.gif" /></div>
+
+		<div class="admin_t fr">
+			<ul>
+				<li><a href="index.php"><img border=0 src="<{$res}>/images/exit4.gif"></a></li>
+				<li><a href="<{$app}>/login/logout" onclick="return confirm('你确定要退出系统吗？')" ><img border=0 src="<{$res}>/images/exit3.gif"></a></li>
+			</ul>
+		</div>
+
+		<div class="admin_u fr">
+				<b>欢迎您-</b><a title="" target="_top" href=""><{$smarty.session.name}></a>&nbsp;【超级管理员】 &nbsp;&nbsp;
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="content">
+	<div class="main">
+		<div class="left">
+			<{foreach $adminmenu as $v }>
+			<div class="fenlei">
+				<h3><{$v.headnav}></h3>
+				<ul>
+					<{foreach $v.subnav as $vv }>
+						<li <{if $vv.menumark eq $menumark }>class="sel" <{/if}>><a href="<{$vv.url}>"><{$vv.name}></a></li>
+					<{/foreach}>
+				</ul>
+			</div>
+			<{/foreach}>
+		</div>
+

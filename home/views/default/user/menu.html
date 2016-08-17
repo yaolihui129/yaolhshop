@@ -1,0 +1,23 @@
+<div class="now">您现在的位置：<a href="index.php">首页</a> > 会员中心 > <{$title}></div>
+<div class="danye_left">
+	<div class="danye_help">
+		<div class="danye_tt"><s></s>会员中心</div>
+		<div class="danye_list">
+			<h3 class="fl_tb3"><s></s>交易管理</h3>
+			<ul>
+				<li class="fl_tb1"><a href="index.php?m=user&a=order" <{if $smarty.get.a eq "orderlist" or $smarty.get.a eq ""}>class="sel"<{/if}>>我的订单</a></li>
+			</ul>
+			<h3 class="fl_tb5"><s></s>信息管理</h3>
+			<ul>
+				<li><a href="index.php?m=user&a=collect" <{if $smarty.get.a eq "collect"}>class="sel"<{/if}>>我的收藏</a></li>
+				<li><a href="index.php?m=user&a=ask" <{if $smarty.get.a eq "ask"}>class="sel"<{/if}>>我的咨询</a></li>
+				<li><a href="index.php?m=user&a=comment" <{if $smarty.get.a eq "comment"}>class="sel"<{/if}>>我的评价</a></li>
+			</ul>
+			<h3 class="fl_tb4"><s></s>个人信息</h3>
+			<ul>
+				<li class="fl_tb1"><a href="index.php?m=user&a=base" <{if $smarty.get.a eq "base"}>class="sel"<{/if}>>基本资料</a></li>
+				<li class="fl_tb1"><a href="index.php?m=user&a=pw" <{if $smarty.get.a eq "pw"}>class="sel"<{/if}>>修改密码</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

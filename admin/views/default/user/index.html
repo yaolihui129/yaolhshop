@@ -1,0 +1,73 @@
+<{include "public/header.html"}>
+
+<div class="right">
+	<div class="now">
+		<div class="now_l"></div>
+		<div class="now_m"><{$title}></div>
+		<div class="now_r"></div>
+		<div class="clear"></div>
+	</div>
+	<div class="search">
+		<div class="fr searbox">
+			<form method="get">
+				<input type="hidden" name="m" value="user" />
+				用户名：<input type="text" name="name" value="<{$smarty.get.name}>" class="inputtext inputtext_150" />
+				联系电话：<input type="text" name="phone" value="<{$smarty.get.phone}>" class="inputtext inputtext_150" />
+				常用邮箱：<input type="text" name="email" value="<{$smarty.get.email}>" class="inputtext inputtext_150" />
+				<select name="orderby" class="inputselect">
+					<option value="" <{if $smarty.get.orderby eq ''}> selected <{/if}> href="">默认排序</option>
+					<option value="ltime" <{if $smarty.get.orderby eq 'ltime'}> selected <{/if}>  href="&orderby=ltime" >最近登录</option>
+				</select>
+				<input type="submit" value="搜索" class="input2" />
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<form method="post" id="form">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+	<tr>
+		<td class="bgtt" width="10"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+		<td class="bgtt" width="50">ID号</td>
+		<td class="bgtt">用户名</td>
+		<td class="bgtt" width="120">联系电话</td>
+		<td class="bgtt" width="180">常用邮箱</td>
+		<td class="bgtt" width="80">注册日期</td>
+		<td class="bgtt" width="120">上次登录</td>
+		<td class="bgtt" width="88">操作</td>
+	</tr>
+	
+	<{foreach $data as $v}>
+	<tr>
+		<td><input type="checkbox" name="id[]" value="<{$v.id}>"></td>
+		<td><{$v.id}></td>
+		<td><{$v.name}></td>
+		<td><{$v.phone}></td>
+		<td><{$v.email}></td>
+		<td><span><{$v.atime|date_format:'%Y-%m-%d'}></span></td>
+		<td><span><{bro_dayago($v.ltime)}></span></td>
+		<td>
+			<a href="admin.php?m=user&a=mod&id=<{$v.id}>" class="admin_edit mar3">修改</a>
+			<a href="admin.php?m=user&a=del&id=<{$v.id}>" class="admin_del" onclick="return confirm('确定要删除会员<{$v.name}>吗？')">删除</a>
+		</td>
+	</tr>
+	<{/foreach}>
+	<tr>
+		<td class="bgtt"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+		<td class="bgtt aleft" colspan="7">
+			<span class="fl"><button href="<{$url}>&a=del" onclick="return bro_cfall(this, 'id', 'form', '批量删除')">批量删除</button></span>
+			<{$fpage}>
+		</td>
+	</tr>
+	</table>
+	</form>
+</div>
+<script type="text/javascript"> 
+$(function(){
+	$("select").change(function(){
+		window.location.href = 'admin.php?<{$args}>' + $(this).find("option:selected").attr("href");
+	})
+})
+</script>
+
+
+<{include "public/footer.html"}>

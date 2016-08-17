@@ -1,0 +1,67 @@
+<{include "public/header.html"}>
+	
+<div class="right">
+	<div class="now">
+		<div class="now_l"></div>
+		<div class="now_m"><{$title}></div>
+		<div class="now_r"></div>
+		<div class="clear"></div>
+	</div>
+	<div class="search">
+		<div class="fr searbox">
+			<form method="get">
+				<input type="hidden" name="m" value="comment" />
+				商品名称：<input type="text" name="name" value="<{$smarty.get.name}>" class="inputtext inputtext_150" />
+				评价详情：<input type="text" name="content" value="<{$smarty.get.content}>" class="inputtext inputtext_150" />
+				用户名：<input type="text" name="uname" value="<{$smarty.get.uname}>" class="inputtext inputtext_100" />
+				<input type="submit" value="搜索" class="input2" />
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<form method="post" id="form">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+	<tr>
+		<td class="bgtt" width="10"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+		<td class="bgtt" width="50">ID号</td>
+		<td class="bgtt">评价详情</td>
+		<td class="bgtt" width="100">用户名</td>
+		<td class="bgtt" width="88">操作</td>
+	</tr>
+
+
+		<{foreach $data as $v}>
+		<tr>
+			<td><input type="checkbox" name="id[]" value="<{$v.aid}>" /></td>
+			<td><{$v.aid}></td>
+			<td class="aleft">
+				<a href="<{$root}>/index.php?m=product&a=index&id=<{$v.pid}>" target="_blank" class="fl mat3" style="border:1px solid #ddd"><img src="<{thumb($v.logo, 60, 60)}>" width="60" height="60"></a>
+				<div class="fl" style="width:530px;margin-left:15px; display:inline;">
+					<p><a href="<{$root}>/index.php?m=product&a=index&id=<{$v.pid}>" target="_blank" class="cblue font14"><{$v.name}></a></p>
+					<p class="c333 mat5 font13">[<{$v.atime|date_format:'%Y-%m-%d'}>]评价：<{$v.content}></p>
+				
+				</div>
+		</td>
+		<td><a href="http://www.ip138.com/ips.asp?ip=<{$v.uip}>" target="_blank"><{$v.uname}></a></td>
+		<td>
+			<a href="<{$url}>&a=mod&id=<{$v.aid}>" class="admin_edit mar3">修改</a>
+			<a href="<{$url}>&a=del&id=<{$v.aid}>" class="admin_del" onclick="return confirm('你确定要删除吗？')">删除</a>
+		</td>
+		</tr>
+		<{/foreach}>
+
+
+
+		<tr>
+		<td class="bgtt" align="center"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+		<td class="bgtt" colspan="4">
+			<span class="fl"><button href="<{$url}>&a=del" onclick="return bro_cfall(this, 'id', 'form', '批量删除')">批量删除</button></span>
+			<{$fpage}>
+		</td>
+	</tr>
+	</table>
+	</form>
+</div>
+	
+
+<{include "public/footer.html"}>	

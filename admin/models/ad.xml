@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<input name="url" type="notnull" msg="链接的URL不能为空！" />
+	<input name="url" type="url" msg="链接不是URL的格式！" />
+</form>	

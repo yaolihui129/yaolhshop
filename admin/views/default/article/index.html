@@ -1,0 +1,76 @@
+<{include "public/header.html"}>
+<div class="right">
+	<div class="now">
+		<div class="now_l"></div>
+		<div class="now_m">
+			<span class="fl"><{$title}></span>
+			<span class="fr fabu"><a href="<{$url}>&a=add">发布文章</a></span>
+		</div>
+		<div class="now_r"></div>
+		<div class="clear"></div>
+	</div>
+	<div class="search">
+		<div class="fr searbox">
+			<form method="get">
+				<input type="hidden" name="m" value="article" />
+				文章名称：<input type="text" name="name" value="<{$where.name}>" class="inputtext inputtext_200" />
+			
+				<select name="cid" class="inputselect">
+					<option value="0">全部分类</option>
+					<{foreach $aclass as $v}>
+					<option <{if $where.cid eq $v.id}> selected <{/if}> value="<{$v.id}>" ><{$v.catname}></option>
+					<{/foreach}>	
+				</select>
+				<input type="submit" value="搜索" class="input2" />
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<form method="post" id="form">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="list">
+	<tr>
+		<td class="bgtt" width="10"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+		<td class="bgtt" width="50">ID号</td>
+		<td class="bgtt">文章名称</td>
+		<td class="bgtt" width="100">文章分类</td>
+		<td class="bgtt" width="100">发布日期</td>
+		<td class="bgtt" width="80">浏览量</td>
+		<td class="bgtt" width="88">操作</td>
+	</tr>
+	<{foreach $data as $v}>
+	<tr>
+		<td><input type="checkbox" name="id[]" value="<{$v.id}>"></td>
+		<td><{$v.id}></td>
+		<td class="aleft"><a href="<{$root}>/index.php?m=article&a=index&id=<{$v.id}>" target="_blank"><{$v.name}></a></td>
+		<td><{$fcat[$v.cid]}></td>
+		<td><{$v.atime|date_format:'%Y-%m-%d'}></td>
+		<td><{$v.clicknum}></td>
+		<td>
+			<a href="<{$url}>&a=mod&id=<{$v.id}>" class="admin_edit mar3">修改</a>
+			<a href="<{$url}>&a=del&id=<{$v.id}>" class="admin_del" onclick="return confirm('你确定要删除吗?')">删除</a>
+		</td>
+	</tr>
+	<{/foreach}>
+	
+	<tr>
+		<td class="bgtt"><input type="checkbox" name="checkall" onclick="bro_checkall(this, 'id')" /></td>
+		<td class="bgtt aleft" colspan="6">
+			<span class="fl"><button href="<{$url}>&a=del" onclick="return bro_cfall(this, 'id', 'form', '批量删除')">批量删除</button></span>
+			<{$fpage}>
+		</td>
+	</tr>
+	</table>
+	</form>
+</div>
+<script type="text/javascript"> 
+$(function(){
+
+	$("select").change(function(){
+		window.location = '<{$url}>&a=index&'+$(this).attr('name')+"="+$(this).find("option:selected").val();
+	})
+})
+</script>
+
+<{include "public/footer.html"}>
+
+

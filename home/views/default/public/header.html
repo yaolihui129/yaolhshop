@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title><{$title}> - <{$setting.web_title}></title>
+	<meta name="keywords" content="<{$setting.web_keywords}>" />
+	<meta name="description" content="<{$setting.web_description}>" />
+	<link type="text/css" rel="stylesheet" href="<{$res}>/css/style.css" />
+	<script type="text/javascript" src="<{$public}>/js/jquery.js"></script>
+	<script type="text/javascript" src="<{$public}>/js/global.js"></script>
+</head>
+<body>
+	<div class="pagetop">
+		
+		<{if bro_login('user')}>
+		<div class="quick_menu">
+			<p>
+			<span class="fl">您好<a style="border:0px;padding:0px" href="<{$app}>?m=user&a=order" title="会员中心"><span class="cred"><{$smarty.session.name}></span></a>， <{$setting.web_title}></span>
+				<span class="fr">
+				<a href="<{$app}>?m=user&a=order" title="会员中心">会员中心</a>
+				<a href="<{$app}>?m=order&a=add" title="购物车" class="gwc">购物车 <span class="cred"><{$cart_num}></span> 件</a>
+				<{if $setting.web_weibo ne ''}>
+					<a href="<{$setting.web_weibo}>" title="官方微博" target="_blank">官方微博</a>
+				<{/if}>
+				<a href="<{$app}>?m=order&a=plist" title="订单查询">订单查询</a>
+				<a href="<{$app}>?m=user&a=logout" title="退出" style="border:0">退出</a>
+			</span>
+			</p>
+		</div>
+
+		<{else}>
+
+		<div class="quick_menu">
+			<p>
+				<span class="fl">您好，<{$setting.web_title}></span>
+				<span class="fr">
+					<a href="<{$app}>?m=user&a=login&<{bro_fromto()}>" title="登录">登录</a>
+					<a href="<{$app}>?m=user&a=register&<{bro_fromto()}>" title="注册">注册</a>
+					<a href="<{$app}>?m=order&a=add" title="购物车" class="gwc">购物车 <span class="cred"><{$cart_num}></span> 件</a>
+					<{if $setting.web_weibo ne ''}>
+						<a href="<{$setting.web_weibo}>" title="官方微博" target="_blank">官方微博</a>
+					<{/if}>
+					<a href="<{$app}>?m=order&a=plist" title="订单查询" style="border:0">订单查询</a>
+				</span>
+			</p>
+		</div>
+
+		<{/if}>
+
+
+
+	
+		<div class="width980">
+			<div class="header">
+				<div class="fl logo">
+					<a href="<{$root}>/index.php" title="<{$setting.web_title}>"><img src="<{thumb($setting.web_logo,200,60,false)}>" height="60" alt="<{$setting.web_title}>" /></a>
+				</div>
+				
+				<div class="sear fl">				
+					<form method="get">
+						<div class="inputbg fl">
+							<input type="hidden" name="m" value="product">
+							<input type="hidden" name="a" value="plist">
+							<input type="text" name="keyword" value="<{$smarty.get.keyword}>" class="fl searinput c666" />
+						</div>
+						<input type="submit" class="fl sear_btn" onclick="this.form.submit();return false;" value="搜索" />
+					</form>
+				</div>
+				<p class="top_tel fr">咨询热线：<{$setting.web_phone}></p>
+			</div>
+		</div>
+		
+		<div class="clear"></div>
+		
+		<div class="nav">
+			<ul>
+				<li class="sel"><a href="<{$app}>" title="首页">首页</a></li>
+				<{foreach $cats as $v}>
+				<li><a href="<{$app}>?m=product&a=plist&cid=<{$v.id}>"><{$v.catname}></a></li>
+				<{/foreach}>
+				<li class="sel"><a href="<{$app}>?m=page&a=index&id=16" title="关于我们">关于我们</a></li>
+			</ul>
+		</div>
+		
+		<div class="clear"></div>
+	
+	</div>
+	<{foreach $ads as $v}>
+	<{if $v.position eq 3}>
+	<div class="ad980">
+		<{if empty($v.url)}>
+		<img src="<{thumb($v.logo, 980, 80)}>" />
+		<{else}>
+			<a href="<{$v.url}>" target="_blank"><img src="<{thumb($v.logo, 980, 80)}>" /></a>
+		<{/if}>
+	</div>
+	<{/if}>
+	<{/foreach}>

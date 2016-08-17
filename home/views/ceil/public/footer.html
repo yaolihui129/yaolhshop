@@ -1,0 +1,188 @@
+
+		<div class="clear"></div>
+	<{foreach $ads as $v}>
+	<{if $v.position eq 4}>
+	<div class="ad980">
+		<{if empty($v.url)}>
+		<img src="<{thumb($v.logo, 980, 80)}>" />
+		<{else}>
+			<a href="<{$v.url}>" target="_blank"><img src="<{thumb($v.logo, 980, 80)}>" /></a>
+		<{/if}>
+	</div>
+	<{/if}>
+	<{/foreach}>
+
+	
+
+		<div class="foot">
+			<div class="bottom_link">
+				<div class="border_link">
+					<div class="item_1 fl">
+						<h3>用户指南</h3>
+						<ul class="mat5">
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[0].id}>" title="<{$page[0].name}>"><{$page[0].name}></a></li>
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[1].id}>" title="<{$page[1].name}>"><{$page[1].name}></a></li>
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[2].id}>" title="<{$page[2].name}>"><{$page[2].name}></a></li>
+						</ul>
+					</div>
+				
+					<div class="bottom_libg fl"></div>
+					
+					<div class="item_1 fl">
+						<h3>配送方式</h3>
+						<ul class="mat5">
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[3].id}>" title="<{$page[3].name}>"><{$page[3].name}></a></li>
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[4].id}>" title="<{$page[4].name}>"><{$page[4].name}></a></li>
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[5].id}>" title="<{$page[5].name}>"><{$page[5].name}></a></li>
+						</ul>
+					</div>
+				
+					<div class="bottom_libg fl"></div>
+
+
+					<div class="item_1 fl">
+						<h3>售后服务</h3>
+						<ul class="mat5">
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[6].id}>" title="<{$page[6].name}>"><{$page[6].name}></a></li>
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[7].id}>" title="<{$page[7].name}>"><{$page[7].name}></a></li>
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[8].id}>" title="<{$page[8].name}>"><{$page[8].name}></a></li>
+						</ul>
+					</div>
+				
+					<div class="bottom_libg fl"></div>
+
+
+					<div class="item_1 fl">
+						<h3>关于我们</h3>
+						<ul class="mat5">
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[9].id}>" title="<{$page[9].name}>"><{$page[9].name}></a></li>
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[10].id}>" title="<{$page[10].name}>"><{$page[10].name}></a></li>
+							<li><a href="<{$app}>?m=page&a=index&id=<{$page[11].id}>" title="<{$page[11].name}>"><{$page[11].name}></a></li>
+						</ul>
+					</div>
+				
+					<div class="bottom_libg fl"></div>
+
+
+					<div class="foot_tel fl">
+						<h3 class="c666"><{$setting.web_title}></h3>
+							<p class="mat10">
+								<{foreach explode(',', $setting.web_qq) as $v}> 
+								<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<{trim($v)}>&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:<{trim($v)}>:41" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+								<{/foreach}>
+							
+								
+							</p>
+							<p class="tel_num"><{$setting.web_phone}></p>
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</div>
+			
+			<div class="flink">
+				<span class="strong">友情链接：</span>
+			
+				<{foreach $links as $v}>
+				<a href="<{$v.url}>" title="<{$v.name}>" target="_blank"><{$v.name}></a>
+				<{/foreach}>
+			
+			</div>
+			<div class="subnav">
+				Copyright <span class="num">&copy;</span> <{$setting.web_copyright}> All Rights Reserved <{$setting.web_icp}>　				     
+				<p>咨询热线：<{$setting.web_phone}>　咨询QQ：<{$setting.web_qq}>　<{$setting.web_tongji}></p>
+				
+				<p>Powered by <a href="http://www.itxdl.com" target="_blank" title="BroShop商城系统v1.0" class="cgreen">XDL</a></p>
+			</div>
+			
+			<!-- div class="subnav">
+				Copyright <span class="num">&copy;</span> 2008-2015 2014-2017 兄弟连云课堂 All Rights Reserved　				     
+				<p>咨询热线：400-700-1307　咨询QQ：779050720,46458494　</p>
+				
+				<p>Powered by <a href="http://www.itxdl.com" target="_blank" title="BroShop商城系统v1.0" class="cgreen">XDL</a></p>
+			</div -->
+		</div>
+		
+		<LINK rel="stylesheet" type="text/css" href="<{$res}>/js/kefu1/css/common.css">
+		<SCRIPT type="text/javascript" src="<{$res}>/js/kefu1/js/kefu.js"></SCRIPT>
+		
+		<DIV id=floatTools class=float0831>
+			<DIV class=floatL>
+				<A  id=aFloatTools_Show class=btnOpen title=查看在线客服 onclick="kf_open()" href="javascript:void(0);">展开</A>
+				<A style="DISPLAY: none" id=aFloatTools_Hide class=btnCtn title=关闭在线客服 onclick="kf_close()" href="javascript:void(0);">收缩</A>
+			</DIV>
+			<DIV id=divFloatToolsView class=floatR>
+    				<DIV class=tp></DIV>
+    				<DIV class=cn>
+					<UL>
+    						<div class="KeFuItem"></div>
+						<LI class="top"  style="padding-top:0"><H3 class=titZx>QQ咨询</H3></LI>
+						<{foreach explode(',',$setting.web_qq) as $v}>
+						<LI ><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=<{trim($v)}>&amp;site=qq&amp;menu=yes" target="_blank"><img border="0" title="在线客服" alt="在线客服" src="http://wpa.qq.com/pa?p=2:<{trim($v)}>:41"></a></LI>
+						<{/foreach}>
+					
+					</UL>
+			
+					<UL class=webZx>
+        					<LI class=webZx-in></LI>
+     					</UL>
+				
+					<UL>
+						<LI class="top" style="padding-top:0"><H3 class=titDh>电话咨询</H3></LI>
+						<LI><SPAN class="icoTl"><{$setting.web_phone}></SPAN><div class="clear"></div></LI>
+						<li style="padding-bottom:5px; float:none;"><a href="<{$app}>?m=page&a=index">更多联系方式>></a></li>
+					</UL>
+				</DIV>
+			</DIV>
+		</DIV>
+<script type="text/javascript"> 
+function kf_open() {
+	$('#divFloatToolsView').animate({width: 'show', opacity: 'show'}, 'normal',function(){
+		$('#divFloatToolsView').show();
+		//kf_setCookie('RightFloatShown', 0, '', '/', 'www.baidu.com');
+	});
+	$('#aFloatTools_Show').attr('style','display:none');
+	$('#aFloatTools_Hide').attr('style','display:block');
+}
+function kf_close() {
+	$('#divFloatToolsView').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){
+		$('#divFloatToolsView').hide();
+		//kf_setCookie('RightFloatShown', 1, '', '/', 'www.baidu.com');
+	});
+	$('#aFloatTools_Show').attr('style','display:block');
+	$('#aFloatTools_Hide').attr('style','display:none');
+}
+kf_close()
+</script>
+
+<script type="text/javascript" src="<{$public}>/js/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="<{$public}>/js/jquery.slide.js"></script>
+<script type="text/javascript"> 
+$(function(){
+	$("img").lazyload({
+		effect:"fadeIn",
+		container:$("body")
+	});
+	$("#jdtslide").KinSlideshow({
+		moveStyle:"left",
+		intervalTime:5,
+		mouseEvent:"mouseover",
+		titleBar:{"titleBar_bgColor":""},
+		titleFont:{TitleFont_size:14,TitleFont_color:"#ffffff"}
+	});
+	$(".fenlei_li").hover(
+		function(){	
+			$(".fenlei_li").find("h3 a").removeClass("sel");	
+			$(this).find("h3 a").addClass("sel");
+			$(".fenlei_li").find("div").hide();	
+			$(this).find("div").show();
+		},
+		function(){
+			$(".fenlei_li").find("h3 a").removeClass("sel");
+			$(".fenlei_li").find("div").hide();	
+		}
+	)
+})
+</script>
+</body>
+</html>

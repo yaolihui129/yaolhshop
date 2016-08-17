@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<input name="name" type="notnull" msg="商品名称不能为空！" />
+	<input name="money" type="notnull" msg="商品价格不能为空！" />
+	<input name="money" type="currency" msg="商品价格格式错误！" />
+	<input name="num" type="notnull" msg="商品库存不能为空！" />
+	<input name="num" type="number" msg="商品库存必须是数字格式！" />
+</form>	

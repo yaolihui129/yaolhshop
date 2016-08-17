@@ -1,0 +1,56 @@
+<{include "public/header.html"}>
+<div class="right">
+	<div class="now">
+		<div class="now_l"></div>
+		<div class="now_m"><{$title}></div>
+		<div class="now_r"></div>
+		<div class="clear"></div>
+	</div>
+	<form method="post">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wenzhang">
+	<tr>
+		<td width="100" class="bg_f8" align="right">支付名称：</td>
+		<td><{$name}></td>
+	</tr>
+	<tr>
+		<td class="bg_f8" align="right">支付描述：</td>
+		<td><input type="text" name="ptext" value="<{$ptext}>" class="inputall input600" /></td>
+	</tr>
+	<tr>
+		<td class="bg_f8" align="right">是否启用：</td>
+		<td>
+			<select name="state" class="inputselect">
+			<{foreach $qt as $k=>$v }>
+				<option value="<{$k}>" <{if $k eq $state }>selected="selected"<{/if}>><{$v}></option>
+			<{/foreach}>
+			</select>
+		</td>
+	</tr>
+	<{foreach $model as $k=>$v }>
+
+	<tr>
+		<td class="bg_f8" align="right"><{$v.name}>：</td>
+		<td>
+
+			<{if $v.form_type eq 'select' }>
+			<select name="config[<{$k}>]" class="inputselect">
+			<{foreach $v.form_value as $kk=>$vv }>
+			<option value="<{$kk}>" <{if $kk eq $config[$k] }>selected="selected"<{/if}>><{$vv}></option>
+			<{/foreach}>
+			</select>
+			<{elseif $v.form_type eq textarea }>
+			<textarea name="config[<{$k}>]" style="width:600px;height:150px;"><{$config[$k]}></textarea>
+			<{else}>
+			<input type="text" name="config[<{$k}>]" value="<{$config[$k]}>" class="inputall input300" />
+			<{/if}>
+		</td>
+	</tr>
+	<{/foreach}>
+	<tr>
+		<td class="bg_f8">&nbsp;</td>
+		<td><input type="submit" name="do_submit" value="提 交" class="tjbtn"></td>
+	</tr>
+	</table>
+	</form>
+</div>
+<{include "public/footer.html"}>

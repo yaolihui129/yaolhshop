@@ -1,0 +1,23 @@
+<{include "public/header.html"}>
+<div class="content">
+	<{include "user/menu.html"}>
+	<div class="fr huiyuan_main">
+		<h3 class="hy_rtt"><{$title}></h3>
+		<div class="asklist">
+			<{foreach $data as $v }>
+			<div style="border-bottom:1px #ddd dashed;padding:20px 0 15px">
+				<a href="<{$app}>?m=product&a=index&id=<{$a.pid}>" target="_blank" class="fl mat3" style="border:1px solid #ddd"><img src="<{thumb($v.logo, 60, 60)}>" width="60" height="60"></a>
+				<div class="fl" style="width:695px; margin-left:15px; display:inline;">
+					<p><a href="<{$app}>?m=product&a=index&id=<{$a.pid}>" target="_blank" class="cblue font14"><{$v.name}></a></p>
+					<p class="corg mat5 font13"><{if !empty($v.content) }> [<{$v.atime|date_format:'%Y-%m-%d %H:%M'}>]<{/if}>评价：<{$v.content}></p>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<{/foreach}>
+		</div>
+		<div class="fenye"><{$fpage}></div>
+	</div>
+	<div class="clear"></div>
+</div>
+<{include "public/footer.html"}>
+
