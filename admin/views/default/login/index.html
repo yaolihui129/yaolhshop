@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<!-- {$seo['title']} -->
-		<title>管理员登录--欢迎使用BroShop商城管理系统</title>
+		<title>欢迎使用eShop商城管理系统</title>
 		<!-- {$seo['keywords']} -->
 		<meta name="keywords" content="{$seo['keywords']}" />
 		<!-- {$seo['description']} -->
@@ -35,7 +35,7 @@
 		    <span class="num">eShop</span>商城管理系统
 		</div>
              <form  method="post">
-                  <div class="login" id="login-form">	
+                  <div class="login" id="login-form">
 	                   <div class="input1">
 	                       <span class="input_name">账 号:</span>
 	                       <input  type="text" name="name" value="" />
@@ -49,7 +49,7 @@
 	                   <div class="input3">
 		                   <div class="input3_box" style="position:relative;">
 			               <span class="fl">验证码:</span>
-			               <input class="fl" type="text" maxlength="4" 
+			               <input class="fl" type="text" maxlength="4"
 			                  onkeyup="if(this.value!=this.value.toUpperCase()) this.value=this.value.toUpperCase()" name="code" />
 			              <div class="clear"></div>
 			               <img src="<{$url}>&a=vcode" class="authcode"
@@ -63,31 +63,31 @@
                     </div>
                 </form>
 		<div class="copyright">
-		     Copyright <span class="num">&copy;</span> 2016-2018 
+		     Copyright <span class="num">&copy;</span> 2016-2018
 		     <a href="http://www.ydma.cn" target="_blank">yaolh</a> 版权所有
 		</div>
 
 
 		<script type="text/javascript">
 			$(function(){
-			
+
 				$(":input[name='name']").focus();
 
 				$(".authcode").click(function(){
 					$(this).attr("src", $(this).attr("src") + '&time=' + new Date().getTime());
 				});
-				
+
 				$(":submit").click(function(){
 					if ($(":input[name='name']").val() == '') {
 						alert('帐号不能为空！')
 						return false;
 					}
-				
+
 					if ($(":input[name='pw']").val() == '') {
 						alert('密码不能为空！')
 						return false;
 					}
-					
+
 					return true;
 				});
 			});
